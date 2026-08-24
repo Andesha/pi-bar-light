@@ -24,6 +24,16 @@ export default function piBarLight(pi: ExtensionAPI): void {
   let timer: NodeJS.Timeout | undefined;
   const unavailable = new Set<string>();
 
+  pi.registerShortcut("ctrl+shift+o", {
+    description: "Open the current directory in VS Code",
+    handler: async (ctx) => {
+      const result = await pi.exec("code", [ctx.cwd]);
+      if (result.code !== 0) {
+        ctx.ui.notify(result.stderr || "Failed to open VS Code", "error");
+      }
+    },
+  });
+
   const refresh = async (ctx: ExtensionContext): Promise<void> => {
     const provider = providerFor(ctx.model?.provider);
     if (!provider) {
