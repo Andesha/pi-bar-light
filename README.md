@@ -5,8 +5,8 @@ An owned, dependency-free Pi footer showing:
 - Git branch and context use
 - Active model and thinking level
 - Session input/output tokens and cost
-- Anthropic 5-hour/7-day plan usage
-- OpenAI Codex primary/secondary rate-limit usage
+- Anthropic 5-hour/7-day plan usage and time until reset
+- OpenAI Codex primary/secondary rate-limit usage and time until reset
 
 The footer refreshes quota data at most once per minute and keeps last-known-good data visible during transient failures. Provider requests use OAuth credentials directly from existing Pi, Claude, or Codex auth stores; credentials are never persisted or logged by this extension.
 
